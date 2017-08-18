@@ -16,7 +16,7 @@ export default {
 ul.label {
     height: 36px;
     padding: 0 20px;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     background-color: @themeBg;
 }
 </style>

@@ -1,6 +1,7 @@
 <template>
     <div class="context">
         <topLabel></topLabel>
+        <operating></operating>
         <ul class="table">
             <li>
                 <b>Id</b>
@@ -32,6 +33,7 @@
 </template>
 <script>
 import topLabel from '@/components/topLabel'
+import operating from '@/components/operating'
 
 export default {
     name: 'context',
@@ -41,7 +43,8 @@ export default {
         }
     },
     components: {
-        topLabel
+        topLabel,
+        operating
     },
     filters: {
         date: function (value) {

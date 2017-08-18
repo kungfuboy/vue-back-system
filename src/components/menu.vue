@@ -30,7 +30,7 @@ export default {
       font-size: 14px;
       color: @themeDark;
       &:hover {
-        background-color: rgba(0,0,0,0.05);
+        background-color: @themeBg;
       }
     }
 }
