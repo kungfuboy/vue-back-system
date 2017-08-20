@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "dev": "webpack-dev-server --config build/dev.js",
-    "build": "webpack -p --config build/build.js --progress --profile --colors"
+    "build": "webpack -p --config build/build.js --progress --profile --colors",
+    "deploy": "git add . && git commit -m'update' && git push"
   },
   "author": "",
   "license": "ISC",

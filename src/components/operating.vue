@@ -1,12 +1,13 @@
 <template>
     <div class="operating">
         <div>
+            
+            <input id="searchInput" type="text" :class="{ active: isActive }" @click="handleInput" placeholder="检索…… " />
             <i class="btn safe">
-                <img src="../assets/icon/create_icon.svg" />
-            </i>
-            <input id="searchInput" type="text" :class="{ active: isActive }" placeholder="搜索你想要的" />
-            <i class="btn primary" @click="handleInput()">
                 <img src="../assets/icon/search_icon.svg" />
+            </i>
+            <i class="btn primary">
+                <img src="../assets/icon/create_icon.svg" />
             </i>
         </div>
         <button type="button" class="btn danger">删除选中项</button>
@@ -21,9 +22,8 @@ export default {
         }
     },
     methods: {
-        handleInput(e) {
-            this.isActive = !this.isActive;
-            this.$el.querySelector('#searchInput').focus();
+        handleInput() {
+            this.isActive = true;
         }
     }
 }
@@ -43,18 +43,15 @@ div.operating {
             margin-right: 20px;
         }
         input {
-            width: 0;
-            padding: 0;
+            width: 13em;
+            padding: 0 5px;
+            margin-right: 1em;
             border: none;
-            border-color: white;
-            overflow: hidden;
-            transition: all .2s ease;
+            border-bottom: 1px solid @themePri;
+            transition: all .4s ease;
         }
         input.active {
             width: 26em;
-            padding: 0 5px;
-            margin-right: 20px;
-            border-bottom: 1px solid @themePri;
         }
     }
 }
