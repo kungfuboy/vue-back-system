@@ -21,7 +21,6 @@ export default {
 </script>
 
 <style lang="less">
-
 .context {
     flex: 1;
 }

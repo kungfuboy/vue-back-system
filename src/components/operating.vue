@@ -1,7 +1,7 @@
 <template>
     <div class="operating">
         <div>
-            
+    
             <input id="searchInput" type="text" :class="{ active: isActive }" @click="handleInput" placeholder="检索…… " />
             <i class="btn safe">
                 <img src="../assets/icon/search_icon.svg" />

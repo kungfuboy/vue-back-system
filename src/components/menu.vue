@@ -1,6 +1,6 @@
 <template>
   <ul class="menu">
-      <li v-for="item in items">{{ item }}</li>
+    <li v-for="item in items">{{ item }}</li>
   </ul>
 </template>
 
@@ -19,19 +19,22 @@ export default {
 @import '../assets/color';
 
 .menu {
-    width: 220px;
-    padding-top: 20px;
-    border-right: 1px solid #d5d5d5;
-    > li {
-      height: 44px;
-      padding: 0 20px;
-      display: flex;
-      align-items: center;
-      font-size: 14px;
-      color: @themeDark;
-      &:hover {
-        background-color: @themeBg;
-      }
+  width: 240px;
+  padding-top: 20px;
+  background-color: @menuBg;
+  border-right: 1px solid #d5d5d5;
+  >li {
+    height: 44px;
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    color: @menuText;
+    cursor: pointer;
+    &:hover {
+      background-color: @menuHighBg;
+      color: @menuHighText;
     }
+  }
 }
 </style>

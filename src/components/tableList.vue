@@ -45,7 +45,7 @@ export default {
             if (item.checked) {
 
             } else {
-                
+
             }
             /**
             这里应该推入每项item的唯一编码，例如id
@@ -69,20 +69,23 @@ export default {
     directives: {
         'check-all': {
             twoWay: true,
-            bind(el, binding) {
-                // 在数据的每项数据上添加一个checked属性，并全部初始化为false
+            params: ['items'],
+            bind(el, binding, vnode) {
+                // // 在数据的每项数据上添加一个checked属性，并全部初始化为false
+                let vm = vnode.context
+                console.log(vm)
                 const arr = binding.value.list
                 const state = binding.value.state
                 arr.forEach((value) => {
-                    value.checked = !state
+                    vm.$set(value,'checked',state)
                 })
             },
-            update(el, binding) {
+            update(el, binding, vnode) {
+                let vm = vnode.context
                 const arr = binding.value.list
                 const state = binding.value.state
-                console.log(state)
                 arr.forEach((value) => {
-                    value.checked = !state
+                    vm.$set(value,'checked',state)
                 })
             }
         }
