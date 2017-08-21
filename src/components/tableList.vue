@@ -73,7 +73,6 @@ export default {
             bind(el, binding, vnode) {
                 // // 在数据的每项数据上添加一个checked属性，并全部初始化为false
                 let vm = vnode.context
-                console.log(vm)
                 const arr = binding.value.list
                 const state = binding.value.state
                 arr.forEach((value) => {
