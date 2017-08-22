@@ -1,7 +1,7 @@
 <template>
     <ul class="tableList">
         <li>
-            <b><input type="checkbox" v-model="checkedAll" v-check-all="{list: items, state: checkedAll}" /></b>
+            <b><input type="checkbox" v-model="checkedAll" @click="handleCheckedAll" /></b>
             <b>Id</b>
             <b>用户名</b>
             <b>密码</b>
@@ -13,7 +13,7 @@
             <b>操作</b>
         </li>
         <li v-for="item in items">
-            <span><input type="checkbox" v-model="item.checked" @click="checkedSingle(item)" /></span>
+            <span><input type="checkbox" v-model="item.checked" /></span>
             <span>{{ item.id }}</span>
             <span>{{ item.username }}</span>
             <span>{{ item.password }}</span>
@@ -41,18 +41,23 @@ export default {
         }
     },
     methods: {
-        checkedSingle(item) {
-            if (item.checked) {
-
-            } else {
-
-            }
-            /**
-            这里应该推入每项item的唯一编码，例如id
-            需要进一步协定
-             */
-            console.log(this.checkedList)
+        handleCheckedAll() {
+            this.items.forEach((item) => {
+                item.checked = this.checkedAll
+            })
+        },
+        countChecked() {
+            const arr = []
+            this.items.forEach((item) => {
+                !!item.checked && arr.push(item)
+            })
+            return arr
         }
+    },
+    mounted() {
+        this.items.forEach((item) => {
+            item.checked = this.checkedAll
+        })
     },
     filters: {
         date(value) {
@@ -64,29 +69,6 @@ export default {
                 m = date.getMinutes(),
                 s = date.getSeconds()
             return YY + '/' + MM + '/' + DD
-        }
-    },
-    directives: {
-        'check-all': {
-            twoWay: true,
-            params: ['items'],
-            bind(el, binding, vnode) {
-                // // 在数据的每项数据上添加一个checked属性，并全部初始化为false
-                let vm = vnode.context
-                const arr = binding.value.list
-                const state = binding.value.state
-                arr.forEach((value) => {
-                    vm.$set(value,'checked',state)
-                })
-            },
-            update(el, binding, vnode) {
-                let vm = vnode.context
-                const arr = binding.value.list
-                const state = binding.value.state
-                arr.forEach((value) => {
-                    vm.$set(value,'checked',state)
-                })
-            }
         }
     }
 }
