@@ -1,7 +1,7 @@
 <template>
-    <ul class="tableList">
+    <ul class="tableList" @click="checkState(items, checkedAll)">
         <li>
-            <b><input type="checkbox" v-model="checkedAll" @click="handleCheckedAll" /></b>
+            <b><input type="checkbox" v-model="checkedAll" @click="handleCheckedAll(items, checkedAll)" /></b>
             <b>Id</b>
             <b>用户名</b>
             <b>密码</b>
@@ -41,9 +41,9 @@ export default {
         }
     },
     methods: {
-        handleCheckedAll() {
-            this.items.forEach((item) => {
-                item.checked = this.checkedAll
+        handleCheckedAll(arr, state) {
+            arr.forEach((item) => {
+                item.checked = state
             })
         },
         countChecked() {
@@ -52,12 +52,22 @@ export default {
                 !!item.checked && arr.push(item)
             })
             return arr
+        },
+        checkState(arr, state) {
+            arr.forEach((item) => {
+                // this.checkedAll = (item.checked !== state) && (state)
+                if(item.checked !== state) {
+                    this.checkedAll = state
+                    return false
+                }
+            })
         }
     },
     mounted() {
         this.items.forEach((item) => {
             item.checked = this.checkedAll
         })
+        console.log(this.countChecked())
     },
     filters: {
         date(value) {
