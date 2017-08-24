@@ -26,7 +26,6 @@ export default {
     methods: {
         handleParent(index) {
             this.activeParent = index
-
         },
         handleChild($event) {
             this.activeChild = $event.target.value
@@ -44,7 +43,7 @@ ul.menu {
     background-color: @menuBg;
     >li {
         height: 44px;
-        overflow: hidden;
+        overflow: initial;
         transition: all 0.25s ease-in;
         &.active {
             >div {
