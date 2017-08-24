@@ -1,41 +1,94 @@
 <template>
-  <ul class="menu">
-    <li v-for="item in items">{{ item }}</li>
-  </ul>
+    <ul class="menu">
+        <li v-for="(item, index) in items" :class="{ active: activeParent === index }" @click="handleParent(index)">
+            <div>{{item.name}}</div>
+            <ul @click="handleChild($event)">
+                <li v-for="(child, n) in item.children" :class="{ active: activeChild === n }" :value="n">{{ child.name }}</li>
+            </ul>
+        </li>
+    </ul>
 </template>
 
 <script>
 export default {
-  name: 'menuSide',
-  data() {
-    return {
-      items: ['菜单一', '菜单二', '菜单三', '菜单四', '菜单五', '菜单六', '菜单七', '菜单八']
+    name: 'menuSide',
+    data() {
+        return {
+            items: [
+                { name: "菜单一", children: [{ name: "子菜单1" }, { name: "子菜单1" }, { name: "子菜单1" }, { name: "子菜单1" }, { name: "子菜单1" }] },
+                { name: "菜单二", children: [{ name: "子菜单2" }, { name: "子菜单2" }, { name: "子菜单2" }, { name: "子菜单2" }, { name: "子菜单2" }] },
+                { name: "菜单三", children: [{ name: "子菜单3" }, { name: "子菜单3" }, { name: "子菜单3" }, { name: "子菜单3" }, { name: "子菜单3" }] }
+            ],
+            activeParent: null,
+            activeChild: null,
+        }
+    },
+    methods: {
+        handleParent(index) {
+            this.activeParent = index
+
+        },
+        handleChild($event) {
+            this.activeChild = $event.target.value
+        }
     }
-  }
 }
 </script>
 
 <style lang="less">
 @import '../assets/color';
 
-.menu {
-  width: 240px;
-  padding-top: 20px;
-  background-color: @menuBg;
-  border-right: 1px solid #d5d5d5;
-  >li {
-    height: 44px;
-    padding: 0 20px;
-    display: flex;
-    align-items: center;
-    font-size: 14px;
-    color: @menuText;
-    cursor: pointer;
-    font-weight: bold;
-    &:hover {
-      background-color: @menuHighBg;
-      color: @menuHighText;
+ul.menu {
+    width: 240px;
+    padding-top: 20px;
+    background-color: @menuBg;
+    >li {
+        height: 44px;
+        overflow: hidden;
+        transition: all 0.25s ease-in;
+        &.active {
+            >div {
+                .parentActive;
+            }
+            >ul {
+                >li {
+                    &:hover,
+                    &.active {
+                        color: white;
+                    }
+                }
+            }
+        }
+        div {
+            height: 44px;
+            padding: 0 20px;
+            display: flex;
+            align-items: center;
+            font-size: 14px;
+            color: @menuText;
+            cursor: pointer;
+            font-weight: bold;
+            &:hover {
+                .parentActive;
+            }
+        }
+        >ul {
+            padding: 0 20px;
+            >li {
+                height: 44px;
+                padding: 0 20px;
+                display: flex;
+                align-items: center;
+                font-size: 14px;
+                color: @menuText;
+                cursor: pointer;
+            }
+        }
     }
-  }
+}
+
+.parentActive {
+    background-color: @menuHighBg;
+    color: @menuHighText;
 }
 </style>
