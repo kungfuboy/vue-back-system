@@ -21,7 +21,10 @@ export default {
 </script>
 
 <style lang="less">
+@import '../assets/color';
+
 .context {
     flex: 1;
+    background-color: @contextBg;
 }
 </style>

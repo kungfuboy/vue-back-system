@@ -14,10 +14,10 @@ export default {
 @import '../assets/public';
 
 ul.label {
-    height: 36px;
+    height: 50px;
     padding: 0 20px;
     margin-bottom: 10px;
-    background-color: @themeBg;
+    background-color: @tableBg;
 }
 </style>
 

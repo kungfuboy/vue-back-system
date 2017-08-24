@@ -31,6 +31,7 @@ export default {
     font-size: 14px;
     color: @menuText;
     cursor: pointer;
+    font-weight: bold;
     &:hover {
       background-color: @menuHighBg;
       color: @menuHighText;

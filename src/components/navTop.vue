@@ -44,6 +44,7 @@ export default {
     align-items: center;
     justify-content: space-between;
     font-size: 20px;
+    border-bottom: 1px solid @tableLine;
     .shadow;
     div.navbar-brand {
         display: flex;
@@ -54,6 +55,9 @@ export default {
         img {
             margin-right: 10px;
             height: 30px;
+        }
+        h3 {
+            font-weight: bold;
         }
     }
     span {
