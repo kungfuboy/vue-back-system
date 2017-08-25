@@ -12,7 +12,7 @@
                     <th>Project</th>
                     <th>Task</th>
                     <th>Date</th>
-                    <th width="40"></th>
+                    <th width="40">State</th>
                 </tr>
             </thead>
             <tbody>
