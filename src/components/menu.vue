@@ -2,7 +2,7 @@
     <ul class="menu">
         <li v-for="(item, index) in items" :class="{ active: activeParent === index }">
             <span @click="handleParent(index)">{{item.name}}</span>
-            <ul @click="handleChild($event)" v-show="activeParent === index">
+            <ul @click="handleChild($event)">
                 <li v-for="(child, n) in item.children" :class="{ active: activeChild === n }" :value="n">{{ child.name }}</li>
             </ul>
         </li>
@@ -49,7 +49,9 @@ ul.menu {
     >li {
         display: flex;
         flex-direction: column;
-        transition: all .3s ease;
+        transition: all .2s ease;
+        max-height: @lineHeight;
+        overflow: hidden;
         >span {
             height: @lineHeight;
             line-height: @lineHeight;
@@ -60,7 +62,6 @@ ul.menu {
             color: @menuText;
             cursor: pointer;
             font-weight: bold;
-            position: relative;
             &:hover {
                 .parentActive;
             }
@@ -79,7 +80,6 @@ ul.menu {
             }
         }
         >ul {
-            // height: 400px;
             background-color: @menuChildBg;
             >li {
                 height: @lineHeight;
@@ -102,6 +102,7 @@ ul.menu {
         }
 
         &.active {
+            max-height: 100%;
             >span {
                 .parentActive;
                 &:after {
