@@ -1,5 +1,6 @@
 <template>
     <section>
+        <operating></operating>
         <table frame=void class="tableList">
             <thead>
                 <tr>
@@ -37,8 +38,10 @@
 </template>
 
 <script>
+import operating from './operating'
+
 export default {
-    name: 'tableList',
+    name: 'dataList',
     data() {
         return {
             checkedAll: false,
@@ -74,7 +77,6 @@ export default {
             arr.forEach((item) => {
                 if (item.checked !== state) {
                     this.checkedAll = false
-                    console.log(this.checkedAll)
                     return false
                 }
             })
@@ -84,7 +86,6 @@ export default {
         this.items.forEach((item) => {
             item.checked = this.checkedAll
         })
-        console.log(this.countChecked())
     },
     filters: {
         date(value) {
@@ -97,6 +98,9 @@ export default {
                 s = date.getSeconds()
             return YY + '/' + MM + '/' + DD
         }
+    },
+    components: {
+        operating
     }
 }
 </script>
@@ -107,6 +111,7 @@ export default {
 
 section {
     display: flex;
+    flex-direction: column;
     flex: 1;
     padding: 0 30px;
     table.tableList {

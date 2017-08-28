@@ -35,7 +35,6 @@ export default {
 
 div.operating {
     height: 33px;
-    padding: 0 30px;
     display: flex;
     justify-content: space-between;
     margin-bottom: 10px;
