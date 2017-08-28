@@ -15,7 +15,6 @@
 import navTop from '@/components/navTop'
 import topLabel from '@/components/topLabel'
 import menuSide from '@/components/menuSide'
-import 'bootstrap/dist/css/bootstrap.min.css'
 
 export default {
     components: {
