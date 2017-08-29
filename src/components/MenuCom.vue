@@ -1,18 +1,23 @@
 <template>
-    <aside class="menu">
-        <router-link v-for="(link, index) in routerLinks" :to="link.path" :key="index">{{ link.name }}</router-link>
+    <aside class="menu" :class="{active: menuState}">
+        <router-link @click="$store.commit('handleMenuState')" v-for="(link, index) in routerLinks" :to="link.path" :key="index">{{ link.name }}</router-link>
     </aside>
 </template>
 
 <script>
 export default {
-    name: 'menuSide',
+    name: 'MenuCom',
     data() {
         return {
             routerLinks: [
                 { path: '/', name: '数据列表' },
                 { path: '/edit', name: '编辑表单' }
             ]
+        }
+    },
+    computed: {
+        menuState() {
+            return this.$store.state.menuShow
         }
     }
 }
@@ -24,9 +29,19 @@ export default {
 @lineHeight: 44px;
 
 aside.menu {
-    width: 240px;
+    width: 70vw;
     padding-top: 20px;
     background-color: @menuBg;
+    position: absolute;
+    top: 0;
+    z-index: 10;
+    transition: all .3s ease;
+    transform: translateX(-100%);
+    left: 0;
+    bottom: 0;
+    &.active {
+        transform: translateX(0);
+    }
     >a {
         display: block;
         height: @lineHeight;
@@ -61,6 +76,14 @@ aside.menu {
             &:after {
                 background-color: white;
             }
+        }
+    }
+    @media screen and (min-width: 720px) {
+        position: initial;
+        width: 240px;
+        transform: none;
+        &.active {
+            transform: none;
         }
     }
 }

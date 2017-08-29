@@ -1,26 +1,27 @@
 <template>
     <div id="app">
-        <navTop></navTop>
+        <NavCom></NavCom>
         <div class="main">
-            <menuSide></menuSide>
+            <MenuCom></MenuCom>
             <section class="content">
-                <topLabel></topLabel>
+                <LabelCom></LabelCom>
                 <router-view></router-view>
             </section>
+            <!-- <i :class="shadow-win"></i> -->
         </div>
     </div>
 </template>
 
 <script>
-import navTop from '@/components/navTop'
-import topLabel from '@/components/topLabel'
-import menuSide from '@/components/menuSide'
+import NavCom from '@/components/NavCom'
+import LabelCom from '@/components/LabelCom'
+import MenuCom from '@/components/MenuCom'
 
 export default {
     components: {
-        navTop,
-        topLabel,
-        menuSide
+        NavCom,
+        LabelCom,
+        MenuCom
     }
 }
 </script>
@@ -41,11 +42,29 @@ body {
     box-sizing: border-box;
     .main {
         display: flex;
+        overflow: auto;
+        border: 1px solid red;
         flex: 1;
         flex-shrink: 0;
+        position: relative;
+        padding-top: 66px;
         .content {
             flex: 1;
             background-color: @contentBg;
+        }
+        >i {
+            width: 0;
+            height: 0;
+            // &.shadow-win {
+            //     position: absolute;
+            //     display: block;
+            //     top: 0;
+            //     bottom: 0;
+            //     left: 0;
+            //     right: 0;
+            //     z-index: 5;
+            //     background-color: rgba(0, 0, 0, 0.2);
+            // }
         }
     }
 }

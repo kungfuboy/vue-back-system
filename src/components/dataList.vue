@@ -1,6 +1,6 @@
 <template>
     <section>
-        <operating></operating>
+        <Crud></Crud>
         <table frame=void class="tableList">
             <thead>
                 <tr>
@@ -28,8 +28,7 @@
                     <td>{{ item.username }}</td>
                     <td>{{ item.createtime | date }}</td>
                     <td>
-                        <i class="safe"><img src="../assets/icon/edit_icon.svg" /></i>
-                        <!-- <i class="danger"><img src="../assets/icon/delete_icon.svg" /></i> -->
+                        
                     </td>
                 </tr>
             </tbody>
@@ -38,7 +37,7 @@
 </template>
 
 <script>
-import operating from './operating'
+import Crud from './Crud'
 
 export default {
     name: 'dataList',
@@ -47,8 +46,8 @@ export default {
             checkedAll: false,
             checkedList: [],
             items: [
-                { "id": 63, "username": "444536546", "createtime": 1503027406000 },
-                { "id": 62, "username": "gfgfhfghgfss", "createtime": 1503025782000 },
+                { "id": 63, "username": "4446", "createtime": 1503027406000 },
+                { "id": 62, "username": "gfgfss", "createtime": 1503025782000 },
                 { "id": 59, "username": "444", "createtime": 1502862694000 },
                 { "id": 61, "username": "666", "createtime": 1502866972000 },
                 { "id": 60, "username": "44444", "createtime": 1502862753000 },
@@ -100,7 +99,7 @@ export default {
         }
     },
     components: {
-        operating
+        Crud
     }
 }
 </script>
@@ -110,10 +109,11 @@ export default {
 @import '../assets/public';
 
 section {
+    width: 100vw;
     display: flex;
     flex-direction: column;
     flex: 1;
-    padding: 0 30px;
+    box-sizing: border-box;
     table.tableList {
         width: 100%;
         color: @tableTextColor;

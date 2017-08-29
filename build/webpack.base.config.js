@@ -12,7 +12,7 @@ module.exports = {
                 ]
             },
             {
-                test: /\.(png|jpg|gif|svg)$/,
+                test: /\.(png|jpg|gif|svg|woff|woff2|eot|ttf)$/,
                 use: [{
                     loader: 'url-loader',
                     options: {
