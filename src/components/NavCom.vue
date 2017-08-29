@@ -38,7 +38,7 @@ export default {
 
 @navHeight: 66px;
 nav.top {
-    width: 100vw;
+    width: 100%;
     height: @navHeight;
     display: flex;
     i {

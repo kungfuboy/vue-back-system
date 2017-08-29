@@ -33,7 +33,7 @@ aside.menu {
     padding-top: 20px;
     background-color: @menuBg;
     position: absolute;
-    top: 0;
+    top: 66px;
     z-index: 10;
     transition: all .3s ease;
     transform: translateX(-100%);

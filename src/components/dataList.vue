@@ -1,38 +1,45 @@
 <template>
     <section>
         <Crud></Crud>
-        <table frame=void class="tableList">
-            <thead>
-                <tr>
-                    <td width="40">
-                        <label class="checkbox-label">
-                            <input type="checkbox" class="checkbox-input" v-model="checkedAll" @click="handleCheckedAll(items, checkedAll)" />
-                            <i></i>
-                        </label>
-                    </td>
-                    <th>Project</th>
-                    <th>Task</th>
-                    <th>Date</th>
-                    <th width="40">State</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr v-for="item in items">
-                    <td>
-                        <label class="checkbox-label">
-                            <input type="checkbox" class="checkbox-input" v-model="item.checked" />
-                            <i></i>
-                        </label>
-                    </td>
-                    <td>{{ item.id }}</td>
-                    <td>{{ item.username }}</td>
-                    <td>{{ item.createtime | date }}</td>
-                    <td>
-                        
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+        <div class="package-table">
+            <table frame=void class="tableList">
+                <thead>
+                    <tr>
+                        <th width="40">
+                            <label class="checkbox-label">
+                                <input type="checkbox" class="checkbox-input" v-model="checkedAll" @click="handleCheckedAll(items, checkedAll)" />
+                                <i></i>
+                            </label>
+                        </th>
+                        <th>Project</th>
+                        <th>Task</th>
+                        <th>Date</th>
+                        <th width="40" class="center">State</th>
+                        <th width="40" class="center">Edit</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-for="item in items">
+                        <td>
+                            <label class="checkbox-label">
+                                <input type="checkbox" class="checkbox-input" v-model="item.checked" />
+                                <i></i>
+                            </label>
+                        </td>
+                        <td>{{ item.id }}</td>
+                        <td>{{ item.username }}</td>
+                        <td>{{ item.createtime | date }}</td>
+                        <td class="center">
+                            <i class="material-icons safe_icon" v-if="!!item.state">done</i>
+                            <i class="material-icons danger_icon" v-else>error</i>
+                        </td>
+                        <td class="center">
+                            <i class="material-icons edit_icon">mode_edit</i>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </section>
 </template>
 
@@ -46,16 +53,16 @@ export default {
             checkedAll: false,
             checkedList: [],
             items: [
-                { "id": 63, "username": "4446", "createtime": 1503027406000 },
-                { "id": 62, "username": "gfgfss", "createtime": 1503025782000 },
-                { "id": 59, "username": "444", "createtime": 1502862694000 },
-                { "id": 61, "username": "666", "createtime": 1502866972000 },
-                { "id": 60, "username": "44444", "createtime": 1502862753000 },
-                { "id": 56, "username": "44", "createtime": 1502854185000 },
-                { "id": 52, "username": "qwe123", "createtime": 1502851368000 },
-                { "id": 51, "username": "qweqwe", "createtime": 1502850351000 },
-                { "id": 50, "username": "234234", "createtime": 1502849864000 },
-                { "id": 48, "username": "qweeq", "createtime": 1502849405000 }
+                { "id": 63, "username": "4446", "createtime": 1503027406000, "state": 1 },
+                { "id": 62, "username": "gfgfss", "createtime": 1503025782000, "state": 1 },
+                { "id": 59, "username": "444", "createtime": 1502862694000, "state": 1 },
+                { "id": 61, "username": "666", "createtime": 1502866972000, "state": 0 },
+                { "id": 60, "username": "44444", "createtime": 1502862753000, "state": 1 },
+                { "id": 56, "username": "44", "createtime": 1502854185000, "state": 0 },
+                { "id": 52, "username": "qwe123", "createtime": 1502851368000, "state": 1 },
+                { "id": 51, "username": "qweqwe", "createtime": 1502850351000, "state": 0 },
+                { "id": 50, "username": "234234", "createtime": 1502849864000, "state": 0 },
+                { "id": 48, "username": "qweeq", "createtime": 1502849405000, "state": 1 }      // 是正常状态
             ]
         }
     },
@@ -109,11 +116,14 @@ export default {
 @import '../assets/public';
 
 section {
-    width: 100vw;
+    width: 100%;
     display: flex;
     flex-direction: column;
     flex: 1;
     box-sizing: border-box;
+    >div.package-table {
+        overflow-x: auto;
+    }
     table.tableList {
         width: 100%;
         color: @tableTextColor;
@@ -141,26 +151,19 @@ section {
                     background-color: @tableHightBg;
                 }
                 td {
-                    padding: 8px 15px;
-                    &:first-child {
-                        text-align: center;
-                    }
-                    >i {
-                        height: 30px;
-                        width: 30px;
-                        display: inline-flex;
-                        align-items: center;
-                        justify-content: center;
-                        cursor: pointer;
-                        .itn;
-                        img {
-                            width: 20px;
-                            height: 20px;
-                        }
-                    }
+                    height: 44px;
+                    padding: 0 10px;
                 }
             }
         }
+        .center {
+            text-align: center;
+        }
+    }
+}
+@media screen and (min-width: 720px){
+    section >div.package-table {
+        padding: 0 30px;
     }
 }
 </style>

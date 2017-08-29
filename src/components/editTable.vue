@@ -1,177 +1,238 @@
 <template>
-    <form>
-        <div>
+    <section>
+        <form>
             <div>
-                <span>公司名称</span>
-            </div>
-            <div><input type="text" /></div>
-        </div>
-        <div>
-            <div>
-                <span>地址</span>
-            </div>
-            <div><input type="text" /></div>
-        </div>
-        <div>
-            <div>
-                <span>联系人</span>
-            </div>
-            <div><input type="text" /></div>
-        </div>
-        <div>
-            <div>
-                <span>邮箱</span>
-            </div>
-            <div><input type="text" /></div>
-        </div>
-        <div>
-            <div>
-                <span>手机号</span>
-            </div>
-            <div><input type="text" /></div>
-        </div>
-        <div>
-            <div>
-                <span>注册日期</span>
-            </div>
-            <div><input type="text" /></div>
-        </div>
-        <div>
-            <div>
-                <span>失效时间</span>
-            </div>
-            <div><input type="text" /></div>
-        </div>
-        <div>
-            <div>
-                <span>最大用户数</span>
-            </div>
-            <div><input type="text" /></div>
-        </div>
-        <div>
-            <div>
-                <span>公司性质</span>
+                <b class="required">公司名称</b>
+                <input type="text">
             </div>
             <div>
+                <b class="required">地址</b>
+                <input type="text">
+            </div>
+            <div>
+                <b class="required">联系人</b>
+                <input type="text">
+            </div>
+            <div>
+                <b class="required">邮箱</b>
+                <input type="text">
+                <i class="tips wrong_tips">邮箱格式不合法</i>
+            </div>
+            <div>
+                <b>手机号</b>
+                <input type="text">
+            </div>
+            <div class="inline">
+                <b>注册日期</b>
+                <input type="text">
+            </div>
+            <div class="inline">
+                <b>失效时间</b>
+                <input type="text">
+            </div>
+            <div class="inline">
+                <b>最大用户数</b>
+                <input type="text">
+            </div>
+            <div class="inline">
+                <b>公司性质</b>
                 <select name="">
                     <option value="zf">政府</option>
                     <option value="gq">国企</option>
                     <option value="my">民营</option>
                 </select>
             </div>
-        </div>
-        <div>
             <div>
-                <span>经营范围</span>
+                <b>经营范围</b>
+                <div class="between-list">
+                    <span>食品
+                        <input type="checkbox">
+                    </span>
+                    <span>药品
+                        <input type="checkbox">
+                    </span>
+                    <span>服装
+                        <input type="checkbox">
+                    </span>
+                </div>
             </div>
             <div>
-                食品
+                <b>是否VIP用户</b>
                 <input type="checkbox">
-                药品
-                <input type="checkbox">
-                服装
-                <input type="checkbox">
-            </div>
-        </div>
-        <div>
-            <div>
-                <span>是否VIP用户</span>
-            </div>
-            <div><input type="checkbox"></div>
-        </div>
-        <div>
-            <div>
-                <span>状态</span>
             </div>
             <div>
-                已启用
-                <input type="radio"> 已禁用
-                <input type="radio">
+                <b>状态</b>
+                <div class="around-list">
+                    <span>已启用
+                        <input type="radio">
+                    </span>
+                    <span>已禁用
+                        <input type="radio">
+                    </span>
+                </div>
             </div>
-        </div>
-        <div>
-            <button class="btn safe" type="button">保存</button>
-        </div>
-    </form>
+            <button class="btn safe" type="button">
+                <i class="material-icons">cloud_done</i>保存
+            </button>
+        </form>
+    </section>
 </template>
 
 <script>
-    export default {
-        name: 'editTable',
-        data() {
-            return {
-                formData: {
-                    company: '',
-                    address: '',
-                    name: '',
-                    email: '',
-                    phone: '',
-                    signDate: '',
-                    FailureTime: '',
-                    maxUsers: ''
-                }
+export default {
+    name: 'editTable',
+    data() {
+        return {
+            formData: {
+                company: '',
+                address: '',
+                name: '',
+                email: '',
+                phone: '',
+                signDate: '',
+                FailureTime: '',
+                maxUsers: ''
             }
         }
     }
+}
 </script>
 
 <style lang="less" scoped>
 @import '../assets/public';
 @import '../assets/color';
 
-form {
+section {
     flex: 1;
-    margin: 0 30px;
-    padding: 40px 0;
-    display: flex;
-    flex-direction: column;
     background-color: white;
-    >div {
-        margin: 10px;
-        font-size: 16px;
+    form {
+        padding: 15px;
         display: flex;
-        align-items: center;
-        justify-content: center;
-        color: @normalText;
-        >div:first-child {
-            flex: 2;
-            text-align: right;
-        }
-        >div:last-child {
-            padding: 0 10px;
-            flex: 3;
-        }
+        flex-direction: column;
         >div {
-            span {
-                min-width: 2em;
-                text-align: right;
+            margin: 6px 0;
+            position: relative;
+            b {
+                display: inline-block;
+                font-weight: bold;
+                margin-bottom: 3px;
+                position: relative;
+                color: #333;
+                &.required:after {
+                    display: block;
+                    position: absolute;
+                    content: '*';
+                    color: @dangerColor;
+                    right: -10px;
+                    top: 0;
+                    font-size: 14px;
+                }
             }
-            input[type="text"] {
-                height: 32px;
-                padding: 0 10px;
-                min-width: 28em;
-                font-size: 14px;
-                color: @remarkText;   // 备注文本色
-
+            input[type=text] {
+                width: 100%;
+                height: 34px;
+                padding: 5px 12px;
+                border-radius: 4px;
+                color: #555;
+                border: 1px solid #ccc;
+                background-color: #fff;
+                box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
             }
-            select {
-                width: 8em;
-                height: 2em;
-            }
-        }
-        .btn {
-            width: 100px;
-            height: 36px;
-            font-size: 16px;
-            text-align: center;
-            display: block;
-        }
-        &.required {
-            &:before {
-                content: '*';
+            >.tips {
                 position: absolute;
-                color: red;
-                font-size: 20px;
+                color: white;
+                animation: jump 1s infinite;
+                background-color: @wrong_tips;
+                box-shadow: inset 0 3px 3px @wrong_tips;
+                height: 24px;
+                line-height: 24px;
+                width: auto;
+                padding: 0 15px;
+                font-size: 12px;
+                border-radius: 4px;
+                top: -5px;
+                right: 0;
+                &:after {
+                    display: block;
+                    content: '';
+                    border-width: 8px 8px 8px 8px;
+                    border-style: solid;
+                    border-color: @wrong_tips transparent transparent transparent;
+                    position: absolute;
+                    right: 10%;
+                    top: 100%;
+                }
+            }
+            &.inline {
+                display: inline-flex;
+                flex-direction: row;
+                align-items: center;
+                justify-content: space-between;
+                b {
+                    margin-right: 20px;
+                    flex-shrink: 0;
+                }
+                input[type=text] {
+                    width: auto;
+                    flex: 1;
+                }
+                select {
+                    flex: 1;
+                    background-color: #fff;
+                    border: 1px solid #ccc;
+                    height: 34px;
+                }
+            }
+            >.between-list {
+                display: flex;
+                justify-content: space-between;
+                span {
+                    flex-shrink: 0;
+                    align-items: center;
+                }
+            }
+            >.around-list {
+                display: flex;
+                justify-content: space-around;
+            }
+        }
+        button.btn {
+            margin: 10px 0;
+            width: 100%;
+            height: 38px;
+            justify-content: center;
+            font-size: 16px;
+            i {
+                margin-right: 3px;
+            }
+        }
+    }
+}
+
+@keyframes jump {
+    0% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-3px);
+    }
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+@media screen and (min-width: 720px) {
+    section {
+        flex: 1;
+        margin: 30px;
+        form {
+            padding: 30px 100px;
+            max-width: 720px;
+            margin: auto;
+            >div,
+            >button.btn {
+                margin: 12px;
+                max-width: 720px;
             }
         }
     }

@@ -25,15 +25,22 @@
 
 
 @dangerColor: #D32F2F;
-@safeColor: #009688;
+@safeColor: #1aae88;
 @priColor: #03A9F4;
 @warnColor: #FF5722;
+@cafeColor: #795548;
 
 .danger {
     background-color: @dangerColor;
 }
+.danger_icon {
+    color: @dangerColor;
+}
 .safe {
     background-color: @safeColor;
+}
+.safe_icon {
+    color: @safeColor;
 }
 .primary {
     background-color: @priColor;
@@ -41,3 +48,11 @@
 .warn {
     background-color: @warnColor;
 }
+.warn_icon {
+    color: @warnColor;
+}
+.edit_icon {
+    color: @cafeColor;
+}
+
+@wrong_tips: rgba(211,47,47, 0.75);

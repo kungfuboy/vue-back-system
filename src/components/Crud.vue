@@ -3,12 +3,13 @@
         <div>
             <input type="text" v-model="condition_1" placeholder="condition 1 ..." />
             <input type="text" v-model="condition_2" placeholder="condition 2 ..." />
-            <button class="btn">
-                <i class="material-icons">brightness_low</i> 搜索</button>
-            <button class="btn">
-                <i class="material-icons">brightness_low</i> 新增</button>
+            <button class="btn primary">
+                <i class="material-icons">search</i> 搜索</button>
+            <button class="btn safe">
+                <i class="material-icons trans90">add</i> 新增</button>
         </div>
-        <button type="button" class="btn danger"><img src="../assets/icon/delete_icon.svg" />删除选中项</button>
+        <button type="button" class="btn danger">
+            <i class="material-icons">delete_forever</i> 删除</button>
     </div>
 </template>
 <script>
@@ -30,6 +31,7 @@ export default {
 </script>
 <style lang="less" scope>
 @import '../assets/color';
+@import '../assets/public';
 
 div.crud {
     width: 100%;
@@ -38,23 +40,26 @@ div.crud {
     flex-direction: column;
     justify-content: space-between;
     margin-bottom: 10px;
+    box-sizing: border-box;
     >div {
         display: flex;
         flex-shrink: 0;
         width: 100%;
         flex-direction: column;
-
         button.btn {
+            display: inline-flex;
             width: 100%;
-            height: 36px;
+            height: 38px;
             margin: 6px 0;
-            display: flex;
             align-items: center;
             justify-content: center;
-            border: 1px solid #000;
+            border: none;
+            border-radius: 2px;
+            transition: all .4s ease;
             >i {}
         }
         input {
+            display: inline-flex;
             width: 100%;
             height: 38px;
             padding: 0 8px;
@@ -66,21 +71,58 @@ div.crud {
             &:first-child {
                 border-right: 1px solid @tableLine;
             }
-            &[placeholder] {
+            &::placeholder {
                 font-style: italic;
-                color: rgba(0, 0, 0, 0.1);
+                color: rgba(0, 0, 0, 0.3);
             }
         }
     }
     >button.btn {
         width: 100%;
-        height: 36px;
+        height: 38px;
         margin: 6px 0;
         display: flex;
         align-items: center;
         justify-content: center;
-        border: 1px solid #000;
+        border: none;
+        border-radius: 2px;
+        .shadow;
         >i {}
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    div.crud {
+        >div {
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            input,
+            button.btn {
+                width: 24%;
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 1600px) {
+    div.crud {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        >div {
+            width: 860px;
+            justify-content: space-between;
+            input {
+                width: 300px;
+            }
+            button.btn {
+                width: 100px;
+            }
+        }
+        >button.btn {
+            width: 100px;
+        }
     }
 }
 </style>
