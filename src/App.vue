@@ -1,6 +1,6 @@
 <template>
     <div id="app">
-        <NavCom></NavCom>
+        <HeaderCom></HeaderCom>
         <div class="main">
             <MenuCom></MenuCom>
             <section class="content">
@@ -13,13 +13,13 @@
 </template>
 
 <script>
-import NavCom from '@/components/NavCom'
+import HeaderCom from '@/components/HeaderCom'
 import LabelCom from '@/components/LabelCom'
 import MenuCom from '@/components/MenuCom'
 
 export default {
     components: {
-        NavCom,
+        HeaderCom,
         LabelCom,
         MenuCom
     }
@@ -51,6 +51,7 @@ body {
             display: flex;
             flex-direction: column;
             flex: 1;
+            overflow: auto;
             background-color: @contentBg;
         }
         >i {

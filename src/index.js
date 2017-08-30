@@ -2,7 +2,9 @@ import Vue from 'vue'
 import App from 'App'
 import VueRouter from 'vue-router'
 import 'material-design-icons/iconfont/material-icons.css';
-import { store } from './store/store'
+import {
+    store
+} from './store/store'
 
 Vue.use(VueRouter)
 

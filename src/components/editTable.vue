@@ -2,19 +2,19 @@
     <section>
         <form>
             <div>
-                <b class="required">公司名称</b>
+                <b class="required bold">公司名称</b>
                 <input type="text">
             </div>
             <div>
-                <b class="required">地址</b>
+                <b class="required bold">地址</b>
                 <input type="text">
             </div>
             <div>
-                <b class="required">联系人</b>
+                <b class="required bold">联系人</b>
                 <input type="text">
             </div>
             <div>
-                <b class="required">邮箱</b>
+                <b class="required bold">邮箱</b>
                 <input type="text">
                 <i class="tips wrong_tips">邮箱格式不合法</i>
             </div>
@@ -105,19 +105,23 @@ export default {
 section {
     flex: 1;
     background-color: white;
+    margin: 0 15px;
     form {
-        padding: 15px;
+        padding: 15px 0;
         display: flex;
         flex-direction: column;
         >div {
-            margin: 6px 0;
+            padding: 15px;
+            border-bottom: 1px solid #eaeef1;
             position: relative;
             b {
                 display: inline-block;
-                font-weight: bold;
                 margin-bottom: 3px;
                 position: relative;
                 color: #333;
+                &.bold {
+                    font-weight: bold;
+                }
                 &.required:after {
                     display: block;
                     position: absolute;
@@ -150,8 +154,8 @@ section {
                 padding: 0 15px;
                 font-size: 12px;
                 border-radius: 4px;
-                top: -5px;
-                right: 0;
+                top: 5px;
+                right: 15px;
                 &:after {
                     display: block;
                     content: '';

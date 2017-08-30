@@ -1,5 +1,5 @@
 <template>
-    <nav class="top">
+    <header>
         <i class="material-icons" @click="$store.commit('handleMenuState')">menu</i>
         <div class="navbar-brand">
             <img src="../assets/images/logo.png" />
@@ -7,18 +7,27 @@
         </div>
         <span class="user-setting" @click="handleListShow">
             <i class="material-icons">brightness_low</i>
-            <img src="../assets/images/head_icon.png" /> 
-            <b>管理员</b>
-            <ul :class="{active: isActive}">
-                <li>注销</li>
-            </ul>
+            <div class="mobile" :class="{active: isActive}">
+                <img src="../assets/images/head_icon.png" />
+                <b>管理员</b>
+                <ul>
+                    <li>注销</li>
+                </ul>
+            </div>
+            <!-- <div class="pc" :class="{active: isActive}">
+                    <img src="../assets/images/head_icon.png" />
+                    <b>管理员</b>
+                    <ul>
+                        <li>注销</li>
+                    </ul>
+                </div> -->
         </span>
-    </nav>
+    </header>
 </template>
 
 <script>
 export default {
-    name: 'NavCom',
+    name: 'HeaderCom',
     data() {
         return {
             isActive: false
@@ -36,26 +45,38 @@ export default {
 @import '../assets/public';
 @import '../assets/color';
 
-@navHeight: 66px;
-nav.top {
+@headerHeight: 66px;
+header {
+    position: absolute;
+    top: 0;
     width: 100%;
-    height: @navHeight;
+    height: @headerHeight;
     display: flex;
+    z-index: 20;
     i {
         display: inline-flex;
         align-items: center;
         justify-content: center;
         color: @normalText;
-        width: @navHeight;
+        width: @headerHeight;
+        z-index: 10;
+        background-color: #fff;
     }
     .navbar-brand {
         flex: 1;
         display: inline-flex;
         align-items: center;
         justify-content: center;
+        z-index: 10;
+        background-color: #fff;
         img {
             margin-right: 10px;
             height: 30px;
+            transition: all .4s ease;
+            transform: rotate(30deg);
+            &:hover {
+                transform: rotate(60deg);
+            }
         }
         h3 {
             display: inline;
@@ -64,16 +85,52 @@ nav.top {
     .user-setting {
         display: inline-flex;
         align-items: center;
-        >b,
-        >img,
-        >ul {
+        position: relative;
+        i {
+            height: 100%;
+            background-color: #fff;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            color: @normalText;
+            width: @headerHeight;
+            z-index: 10;
+        }
+        >.mobile {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            width: 100vw;
+            background-color: #fff;
+            z-index: 3;
+            height: 50vh;
+            transition: all .2s ease;
+            transform: translateY(-100% - 66px);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            align-items: center;
+            box-shadow: 0 2px 2px rgba(0,0,0,0.05), 0 1px 0 rgba(0,0,0,0.05);
+            img {
+                width: 140px;
+                height: 140px;
+                padding: 3px;
+                box-sizing: border-box;
+                border: 1px solid #efefef;
+                border-radius: 50%;
+            }
+            &.active {
+                transform: translateY(0);
+            }
+        }
+        >.pc {
             display: none;
         }
     }
 }
 
 @media screen and (min-width: 720px) {
-    nav.top {
+    header {
         padding: 0 30px;
         >i {
             display: none;
@@ -127,7 +184,6 @@ nav.top {
                 li {
                     text-align: left;
                     color: @normalText;
-                    
                 }
             }
             ul.active {
